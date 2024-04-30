@@ -92,7 +92,7 @@ class rt_scf:
 
         # Start propagation
         for i in range(0, self.total_steps):
-        
+
             t = (i * self.timestep)
             if np.mod(i, self.frequency) == 0:
                 rt_observables.get_observables(self, t, mo_coeff_print)
@@ -100,9 +100,9 @@ class rt_scf:
             match self.prop:
                 case "magnus_step":
                     if self.nmat == 1:
-                        den_ao_old = rt_integrators.prop_magnus_step(self, den_ao_old)
+                        mo_coeff_old = rt_integrators.prop_magnus_step(self, mo_coeff_old)
                     else:
-                        den_ao_old = rt_integrators.prop_magnus_step_os(self, den_ao_old)
+                        mo_coeff_old = rt_integrators.prop_magnus_step_os(self, mo_coeff_old)
                 case "magnus_interpol":
                     if self.nmat == 1:
                         fock_orth_n12dt = rt_integrators.prop_magnus_ord2_interpol(self, fock_orth_n12dt)
