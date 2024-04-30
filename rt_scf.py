@@ -54,7 +54,6 @@ class rt_scf:
         else:
             self.dim = np.array([self.nmat, nmo, nmo])
 
-        self.den_ao = self._scf.make_rdm1(mo_occ=self.occ)
 
     def get_fock_orth(self, den_ao):
 
@@ -82,7 +81,7 @@ class rt_scf:
         rt_output.create_output_file(self)
 
         if mo_coeff_print is None: mo_coeff_print = self._scf.mo_coeff
-
+        self.den_ao = self._scf.make_rdm1(mo_occ=self.occ)
         self.hcore = self._scf.get_hcore(self._scf.mol)
 
         if self.prop == "magnus_step":
