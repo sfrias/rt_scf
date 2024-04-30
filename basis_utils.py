@@ -13,12 +13,12 @@ def print2molden(mf, filename=None, mo_coeff=None):
     with open(filename + '.molden', 'w') as moldenfile:
         molden.header(mf.mol, moldenfile)
         if len(np.shape(mo_coeff)) < 3:
-            molden.orbital_coeff(mf.mol, moldenfile, mo_coeff, 
+            molden.orbital_coeff(mf.mol, moldenfile, mo_coeff,
                                  ene=mf.mo_energy, occ=mf.mo_occ)
         else:
-            molden.orbital_coeff(mf.mol, moldenfile, mo_coeff[0], 
+            molden.orbital_coeff(mf.mol, moldenfile, mo_coeff[0],
                                  ene=mf.mo_energy[0], occ=mf.mo_occ[0], spin = 'Alpha')
-            molden.orbital_coeff(mf.mol, moldenfile, mo_coeff[1], 
+            molden.orbital_coeff(mf.mol, moldenfile, mo_coeff[1],
                                  ene=mf.mo_energy[1], occ=mf.mo_occ[1], spin = 'Beta')
 
 
